@@ -1,0 +1,27 @@
+
+.background {
+    background-image: url('/images/banner.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    box-shadow: inset 60px 100px 300px 100px #141414;
+  }
+  
+  .text-clamp {
+    font-size: clamp(3rem, 2.5vw, 6rem);
+  }
+  
+  /* @media (min-width: 640px) {
+    .text-clamp {
+        font-size: clamp(2.5rem, 3vw, 5rem); 
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .text-clamp {
+        font-size: clamp(3rem, 2.5vw, 6rem); 
+    }
+  }
+  
+  
+  */
