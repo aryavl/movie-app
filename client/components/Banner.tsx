@@ -7,10 +7,10 @@ const Banner = () => {
       <div className={`relative ${styles.background}`}>
         <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#141414] to-transparent"></div>
       </div>
-      <div className="relative z-10 h-[50vh] sm:h-[35vh] md:h-[40vh] lg:h-[50vh]  bg-[#141414] pb-10 pt-2">
+      <div className="relative  h-[20vh] sm:h-[30vh] md:h-[40vh] lg:h-[25vh]  bg-[#141414] pb-10 pt-2">
         <div className=" w-[80%] mx-auto overflow-hidden flex items-center justify-center flex-col gap-5 xl:gap-8"></div>
       </div>
-      <div className="w-[80%] text-center flex flex-col items-center absolute top-[40%] sm:top-[50%]  md:top-[55%] lg:top-[50%] left-[10%] z-[10] justify-center mx-auto ">
+      <div className="w-[80%] text-center flex flex-col items-center absolute top-[60%] sm:top-[50%]  md:top-[55%] lg:top-[60%] left-[10%] z-[10] justify-center mx-auto ">
         <h1 className="text-white mt-5  text-xl sm:text-xxl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center">
           Best viewing experience with Utsav
         </h1>
