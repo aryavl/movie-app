@@ -6,8 +6,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { CloseOutlined } from "@mui/icons-material";
-import { AnimatePresence, motion } from "framer-motion";
-
+import { AnimatePresence,motion } from "framer-motion";
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
   const navAnimation = open ? "translate-x-0" : "translate-x-[-100%]";
@@ -44,6 +43,8 @@ const Navbar = () => {
             aria-expanded="false"
             onClick={() => setOpen(true)}
           >
+            {/* <span className="sr-only">Open main menu</span> */}
+
             <MenuOpenIcon
               aria-hidden="true"
               className="w-[2rem] h-[2rem] text-white"
@@ -51,11 +52,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <motion.div
-          initial={false}
-          animate={{ x: open ? 0 : '-100%' }}
-          exit={{ x: '-100%', transition: { duration: 1} }} 
-          transition={{ duration: 0.3,ease:'easeOut'  }}
+        <div
           className="items-center justify-between hidden w-full  md:flex md:w-auto md:order-1"
           id="navbar-sticky"
         >
@@ -104,16 +101,15 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-        </motion.div>
+        </div>
         <AnimatePresence>
-        {open && (
-          <>
+          {open && (
             <motion.div
-              initial={{ x: '-100%' }}
+              initial={{ x: "-100%" }}
               animate={{ x: 0 }}
-              exit={{ x: '-100%', transition: { duration: 1 } }} 
-              transition={{ duration: 0.3,ease:'easeOut' }}
-              className={`fixed ${navAnimation} transform transition-all duration-300 top-0 left-0 right-0 bottom-0 z-[1000000] bg-[#0f0f0f]`}
+              exit={{ x: "-100%" }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className={` fixed top-0 left-0 right-0 bottom-0 z-[1000000] bg-[#0f0f0f]`}
             >
               <div className="w-[100vw] h-[100vh] flex flex-col items-center justify-center ">
                 <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium    bg-[#0f0f0f] md:space-x-6 rtl:space-x-reverse md:flex-row md:mt-0  py-4  ">
@@ -159,19 +155,16 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div>
-
-              <motion.button
+              <button
                 onClick={() => {
                   setOpen(false);
                 }}
-                whileTap={{ scale: 0.9 }}
                 className="absolute cursor-pointer top-[1rem] right-[2rem] w-[2rem] h-[2rem] text-white z-[1000000]"
               >
                 <CloseOutlined />
-              </motion.button>
-            </motion.div>
-          </>
-        )}
+              </button>
+              </motion.div>
+          )}
         </AnimatePresence>
       </div>
     </nav>
