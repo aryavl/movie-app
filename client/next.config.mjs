@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images:{
-        domains:['wallpaperaccess.com']
+        domains:["via.placeholder.com",'wallpaperaccess.com']
     }
 };
 
