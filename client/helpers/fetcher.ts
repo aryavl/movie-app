@@ -57,3 +57,15 @@ export const getPopularMovies= async()=>{
     const data = await response.json();
     return data.results;
 }
+export const getTopRatedMovies= async()=>{
+    const response = await fetch(
+        `${baseURL}/movie/top_rated?api_key=${API_KEY}&language=en&page=1`
+    );
+    if (!response.ok) {
+        throw new Error(
+            `Failed to fetch latest movies. Status: ${response.status}`
+        );
+    }
+    const data = await response.json();
+    return data.results;
+}
