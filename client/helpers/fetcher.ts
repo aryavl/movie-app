@@ -32,3 +32,16 @@ export const getUpcomingMovies=async()=>{
       return data.results;
     
 }
+
+export const getLatestMovies= async()=>{
+    const response = await fetch(
+        `${baseURL}/movie/now_playing?api_key=${API_KEY}&language=en&page=1`
+    );
+    if (!response.ok) {
+        throw new Error(
+            `Failed to fetch latest movies. Status: ${response.status}`
+        );
+    }
+    const data = await response.json();
+    return data.results;
+}
