@@ -18,3 +18,17 @@ export const getGenreList=async()=>{
     }))
       return genreWithMovies
 }
+
+export const getUpcomingMovies=async()=>{
+    const response = await fetch(
+        `${baseURL}/movie/upcoming?api_key=${API_KEY}&language=en&page=1`
+      );
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch upcoming movies. Status: ${response.status}`
+        );
+      }
+      const data = await response.json();
+      return data.results;
+    
+}
