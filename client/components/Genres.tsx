@@ -7,6 +7,7 @@ import { getGenreList } from "@/helpers/fetcher";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Pagination from "./Pagination";
 import { imageUrl } from "@/helpers/constants";
+import { calculateItemsPerPage } from "@/helpers/helper";
 
 interface GenreProp {
   id: number;
@@ -19,21 +20,6 @@ interface GenreProp {
 }
 
 const Genres = () => {
-  const calculateItemsPerPage = () => {
-    const screenWidth = window.innerWidth;
-    let itemsPerPage = 5;
-    if (screenWidth >= 1024) {
-      itemsPerPage = 5;
-    } else if (screenWidth >= 768) {
-      itemsPerPage = 4;
-    } else if (screenWidth >= 640) {
-      itemsPerPage = 3;
-    } else {
-      itemsPerPage = 2;
-    }
-    return itemsPerPage;
-  };
-
   const [genreTitle, setGenreTitle] = useState<GenreProp[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -45,8 +31,6 @@ const Genres = () => {
     const fetchData = async () => {
       try {
         const data = await getGenreList();
-        console.log(data);
-
         setGenreTitle(data);
         setLoading(false);
       } catch (error) {
@@ -54,11 +38,8 @@ const Genres = () => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
-
-  console.log(genreTitle, "gene");
 
   // dynamically set the itemsPerPage according to the screen size
   useEffect(() => {
