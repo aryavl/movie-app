@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import Footer from "@/components/Footer";
 import Genres from "@/components/Genres";
 import Latest from "@/components/Latest";
 import Navbar from "@/components/Navbar";
@@ -19,6 +20,10 @@ export default function Home() {
         <TopRated/>
         <Popular/>
       </div>
+      
+
+      <Footer/>
+      
     </>
   );
 }
