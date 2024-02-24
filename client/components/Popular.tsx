@@ -76,7 +76,7 @@ const Popular = () => {
   return (
     <div className="flex flex-col mt-10">
       <SectionHeader
-        heading="Popular on Utsav"
+        heading="Popular "
         page={currentPage}
         onPageChange={handlePageChange}
         totalPage={totalPage}
