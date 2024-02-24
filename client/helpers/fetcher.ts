@@ -45,3 +45,15 @@ export const getLatestMovies= async()=>{
     const data = await response.json();
     return data.results;
 }
+export const getPopularMovies= async()=>{
+    const response = await fetch(
+        `${baseURL}/movie/popular?api_key=${API_KEY}&language=en&page=1`
+    );
+    if (!response.ok) {
+        throw new Error(
+            `Failed to fetch latest movies. Status: ${response.status}`
+        );
+    }
+    const data = await response.json();
+    return data.results;
+}

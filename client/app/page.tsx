@@ -2,6 +2,7 @@ import Banner from "@/components/Banner";
 import Genres from "@/components/Genres";
 import Latest from "@/components/Latest";
 import Navbar from "@/components/Navbar";
+import Popular from "@/components/Popular";
 import Upcoming from "@/components/Upcoming";
 
 
@@ -14,6 +15,7 @@ export default function Home() {
         <Genres />
         <Upcoming />
         <Latest/>
+        <Popular/>
       </div>
     </>
   );
