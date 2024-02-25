@@ -21,8 +21,8 @@ const MovieDetailSection: React.FC<{ movie: MovieDetailProp | null }> = ({
   const year = movie?.release_date.substring(0, 4);
 
   // Function to generate star icons based on rating
-  const renderStars = (rating: number) => {
-    const stars = [];
+  const renderStars = (rating: number): JSX.Element[] => {
+    const stars: JSX.Element[] = [];
     for (let i = 0; i < 5; i++) {
       if (i < rating / 2) {
         stars.push(<GradeIcon key={i} className="text-red-700" />);
@@ -32,6 +32,7 @@ const MovieDetailSection: React.FC<{ movie: MovieDetailProp | null }> = ({
     }
     return stars;
   };
+  
 
   return (
     <div className="w-[80%] mx-auto pt-10 mt-40 sm:mt-20">

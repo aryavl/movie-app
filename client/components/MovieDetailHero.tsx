@@ -1,9 +1,10 @@
-import { imageUrl } from '@/helpers/constants';
+
 import React from 'react';
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import { imageUrl } from '../helpers/constants';
 
 interface MovieDetailProp {
   id: string;
