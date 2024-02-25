@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
+"use client"
+import React, { useEffect, useState, useRef } from "react";
 import SectionHeader from "./SectionHeader";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
@@ -7,7 +7,6 @@ import { getGenreList } from "@/helpers/fetcher";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Pagination from "./Pagination";
 import { imageUrl } from "@/helpers/constants";
-import { calculateItemsPerPage } from "@/helpers/helper";
 
 interface GenreProp {
   id: number;
@@ -20,12 +19,32 @@ interface GenreProp {
 }
 
 const Genres = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const calculateItemsPerPage = () => {
+    const containerWidth = containerRef.current?.clientWidth || 0;
+    let itemsPerPage = 5;
+  
+    if (containerWidth >= 1024) {
+      itemsPerPage = 5;
+    } else if (containerWidth >= 768 && containerWidth < 1024) {
+      itemsPerPage = 5;
+    } else if (containerWidth >= 640 && containerWidth < 768) {
+      itemsPerPage = 4;
+    } else if (containerWidth >= 420 && containerWidth < 640) {
+      itemsPerPage = 3;
+    } else {
+      itemsPerPage = 2;
+    }
+  
+    return itemsPerPage;
+  };
+  
+  
+  
   const [genreTitle, setGenreTitle] = useState<GenreProp[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(
-    calculateItemsPerPage()
-  );
+  const [itemsPerPage, setItemsPerPage] = useState<number>(5);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,45 +60,52 @@ const Genres = () => {
     fetchData();
   }, []);
 
-  // dynamically set the itemsPerPage according to the screen size
   useEffect(() => {
-    function handleResize() {
+    
+    
+
+    const handleResize = () => {
       setItemsPerPage(calculateItemsPerPage());
-    }
+    };
+
+    handleResize(); // Initial calculation
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  // Logic to get current items based on pagination
-  const totalPage = Math.round((genreTitle.length - 1) / itemsPerPage);
+  const totalPage = Math.round(genreTitle.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = genreTitle.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePrevPage = () => {
-    if (currentPage && currentPage > 1) {
-      setCurrentPage(currentPage - 1); // Decrease page number
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
     }
   };
 
   const handleNextPage = () => {
-    if (currentPage) {
-      setCurrentPage(currentPage + 1); // Increase page number
+    if (currentPage < totalPage) {
+      setCurrentPage(currentPage + 1);
     }
   };
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" ref={containerRef}>
       <SectionHeader
         heading="Our Genres"
         page={currentPage}
         onPageChange={handlePageChange}
         totalPage={totalPage}
       />
-      <div className="grid grid-cols-2 overflow-hidden sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 text-white relative mt-10 gap-4 ">
+      <div className="grid grid-cols-2 overflow-hidden sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 text-white relative mt-10 gap-4">
         {loading ? (
           <h1>Loading...</h1>
         ) : (

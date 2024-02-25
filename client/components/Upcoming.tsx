@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SectionHeader from "./SectionHeader";
-import { calculateItemsPerPage, formatDateFunction } from "@/helpers/helper";
+import {  formatDateFunction } from "@/helpers/helper";
 import { getUpcomingMovies } from "@/helpers/fetcher";
 import Pagination from "./Pagination";
 import Card from "./Card";
@@ -25,12 +25,31 @@ interface UpcomingProps {
 }
 
 const Upcoming: React.FC = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const calculateItemsPerPage = () => {
+      const containerWidth = containerRef.current?.clientWidth || 0;
+      let itemsPerPage = 5;
+    
+      if (containerWidth >= 1024) {
+        itemsPerPage = 5;
+      } else if (containerWidth >= 768 && containerWidth < 1024) {
+        itemsPerPage = 5;
+      } else if (containerWidth >= 640 && containerWidth < 768) {
+        itemsPerPage = 4;
+      } else if (containerWidth >= 420 && containerWidth < 640) {
+        itemsPerPage = 3;
+      } else {
+        itemsPerPage = 2;
+      }
+    
+      return itemsPerPage;
+    };
+    
   const [upcomingMovies, setUpcomingMovies] = useState<UpcomingProps[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(
-    calculateItemsPerPage()
-  );
+  const [itemsPerPage, setItemsPerPage] = useState<number>(5);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,7 +78,7 @@ const Upcoming: React.FC = () => {
   };
 
   // Logic to get current items based on pagination
-  const totalPage = Math.ceil(upcomingMovies.length / itemsPerPage);
+  const totalPage = Math.round(upcomingMovies.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = upcomingMovies.slice(indexOfFirstItem, indexOfLastItem);
