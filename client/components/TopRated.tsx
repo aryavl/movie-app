@@ -98,7 +98,7 @@ const TopRated: React.FC = () => {
                 <div className="overflow-hidden relative">
                   <div className="flex justify-center items-center pt-5 pb-10">
                     <div className="p-2">
-                      <Link href="/">
+                      <Link href={`/movie-detail/${item.id}`}>
                         <ImageSuspense
                           src={item.poster_path}
                           alt={item.title}

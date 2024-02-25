@@ -24,7 +24,7 @@ function Card<T extends CommonProps>({ item }: CardProps<T>) {
       <div className="overflow-hidden relative">
         <div className="flex justify-center items-center pt-5 pb-10">
           <div className="p-2">
-            <Link href={"/"}>
+            <Link href={`/movie-detail/${item.id}`}>
               <ImageSuspense
                 src={item.poster_path}
                 alt={item.title}

@@ -6,10 +6,11 @@ interface ImageWithSuspenseProps{
     src: string;
     alt: string;
     fallback?: ReactNode;
-    width:number,
-    height:number
+    width?:number  ,
+    height?:number ,
+    layout?:string
   }
-const ImageSuspense: React.FC<ImageWithSuspenseProps> = ({ src, alt, fallback, width,height }) => {
+const ImageSuspense: React.FC<ImageWithSuspenseProps> = ({ src, alt, fallback, width,height ,layout}) => {
   return (
     <Suspense fallback={fallback || <h1>Loading...</h1>}>
     <Image
@@ -17,6 +18,7 @@ const ImageSuspense: React.FC<ImageWithSuspenseProps> = ({ src, alt, fallback, w
       alt={alt}
       width={width}
       height={height}
+      layout={layout}
     />
   </Suspense>
   )
