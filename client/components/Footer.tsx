@@ -4,7 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const Footer = () => {
   return (
-    <div className='bg-[#0f0f0f] mt-24 text-[#9e9d9d]'>
+    <div className='bg-[#0f0f0f]  text-[#9e9d9d]'>
         <div className='w-[80%] mx-auto pt-20 pb-10'>
             <div className='grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 text-[14px] gap-8'>
                 <div>
