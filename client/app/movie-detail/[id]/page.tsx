@@ -1,10 +1,11 @@
 "use client"
-import Footer from '@/components/Footer';
-import MovieDetailHero from '@/components/MovieDetailHero';
-import MovieDetailNavbar from '@/components/MovieDetailNavbar';
-import MovieDetailSection from '@/components/MovieDetailSection';
-import { getSingleMovieDetails } from '@/helpers/fetcher';
+
 import React, { useEffect, useState } from 'react';
+import { getSingleMovieDetails } from '../../../helpers/fetcher';
+import MovieDetailNavbar from '../../../components/MovieDetailNavbar';
+import MovieDetailHero from '../../../components/MovieDetailHero';
+import MovieDetailSection from '../../../components/MovieDetailSection';
+import Footer from '../../../components/Footer';
 
 interface ParamsType {
   id: string;

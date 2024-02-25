@@ -98,7 +98,7 @@ const Genres = () => {
   };
 
   return (
-    <div className="flex flex-col" ref={containerRef}>
+    <div id="genre-section"  className="flex flex-col" ref={containerRef}>
       <SectionHeader
         heading="Our Genres"
         page={currentPage}

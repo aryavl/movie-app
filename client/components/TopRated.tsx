@@ -95,7 +95,7 @@ const TopRated: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col mt-10">
+    <div id="toprated-section" className="flex flex-col mt-10" ref={containerRef}>
       <SectionHeader
         heading="Top Rated"
         page={currentPage}
