@@ -93,7 +93,7 @@ const Latest = () => {
     }
   };
   return (
-    <div className="flex flex-col mt-10">
+    <div id="latest-section" className="flex flex-col mt-10" ref={containerRef}>
       <SectionHeader
         heading="Latest on Utsav"
         page={currentPage}

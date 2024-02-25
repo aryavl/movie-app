@@ -9,8 +9,14 @@ import { CloseOutlined } from "@mui/icons-material";
 import { AnimatePresence,motion } from "framer-motion";
 const Navbar = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const navAnimation = open ? "translate-x-0" : "translate-x-[-100%]";
-
+  
+    const scrollToSection = (id:string) =>{
+        const section = document.getElementById(id)
+        if(section){
+            setOpen(false);
+            section.scrollIntoView({behavior:"smooth", block: "start", inline: "nearest"})
+        }
+    }
   return (
     <nav className="bg-transparent  fixed w-full z-20 top-0 start-0 ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -71,6 +77,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="#"
+                onClick={()=>{scrollToSection("upcoming-section")}}
                 className="block py-0 px-0 mx-0 my-0  lg:py-2 lg:px-4 lg:mx-3 lg:my-3 text-gray-300 bg-[#0f0f0f] hover:bg-[#1A1A1A] hover:text-white hover:rounded-xl  transition ease-out duration-100  hover:scale-110 "
               >
                 Upcoming
@@ -79,6 +86,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="#"
+                onClick={()=>{scrollToSection("latest-section")}}
                 className="block py-0 px-0 mx-0 my-0  lg:py-2 lg:px-4 lg:mx-3 lg:my-3 text-gray-300 bg-[#0f0f0f] hover:bg-[#1A1A1A] hover:text-white hover:rounded-xl transition ease-out duration-100  hover:scale-110 "
               >
                 Latest
@@ -87,6 +95,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="#"
+                onClick={()=>{scrollToSection('popular-section')}}
                 className="block py-0 px-0 mx-0 my-0  lg:py-2 lg:px-4 lg:mx-3 lg:my-3 text-gray-300 bg-[#0f0f0f] hover:bg-[#1A1A1A] hover:text-white hover:rounded-xl transition ease-out duration-100  hover:scale-110 "
               >
                 Popular
@@ -95,6 +104,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="#"
+                onClick={()=>{scrollToSection("toprated-section")}}
                 className="block py-0 px-0 mx-0 my-0  lg:py-2 lg:px-4 lg:mx-3 lg:my-3 text-gray-300 bg-[#0f0f0f] hover:bg-[#1A1A1A] hover:text-white hover:rounded-xl transition ease-out duration-100  hover:scale-110 "
               >
                 Top Rated
@@ -124,6 +134,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#"
+                      onClick={()=>{scrollToSection("upcoming-section")}}
                       className="block w-[80vw] text-center py-2 px-4 mx-3 my-3 text-gray-300 bg-[#0f0f0f] hover:bg-[#1A1A1A] hover:text-white hover:rounded-xl  transition ease-out duration-100  hover:scale-110 "
                     >
                       Upcoming
@@ -132,6 +143,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#"
+                      onClick={()=>{scrollToSection("latest-section")}}
                       className="block w-[80vw] text-center py-2 px-4 mx-3 my-3 text-gray-300 bg-[#0f0f0f] hover:bg-[#1A1A1A] hover:text-white hover:rounded-xl transition ease-out duration-100  hover:scale-110 "
                     >
                       Latest
@@ -140,6 +152,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#"
+                      onClick={()=>{scrollToSection('popular-section')}}
                       className="block w-[80vw] text-center py-2 px-4 mx-3 my-3 text-gray-300 bg-[#0f0f0f] hover:bg-[#1A1A1A] hover:text-white hover:rounded-xl transition ease-out duration-100  hover:scale-110 "
                     >
                       Popular
@@ -148,6 +161,7 @@ const Navbar = () => {
                   <li>
                     <Link
                       href="#"
+                      onClick={()=>{scrollToSection("toprated-section")}}
                       className="block w-[80vw] text-center py-2 px-4 mx-3 my-3 text-gray-300 bg-[#0f0f0f] hover:bg-[#1A1A1A] hover:text-white hover:rounded-xl transition ease-out duration-100  hover:scale-110 "
                     >
                       Top Rated

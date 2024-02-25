@@ -92,7 +92,7 @@ const Popular = () => {
     }
   };
   return (
-    <div className="flex flex-col mt-10">
+    <div id='popular-section' className="flex flex-col mt-10" ref={containerRef}>
       <SectionHeader
         heading="Popular "
         page={currentPage}
