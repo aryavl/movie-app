@@ -79,6 +79,13 @@ export const getSingleMovieDetails= async(id:number|string)=>{
         );
     }
     const data = await response.json();
-    return data;
+    const credits = await fetch(`${baseURL}/movie/${id}/credits?api_key=${API_KEY}&language=en`)
+    if (!credits.ok) {
+        throw new Error(
+            `Failed to fetch latest movies. Status: ${response.status}`
+        );
+    }
+    const creditsData = await credits.json();
+    return {data:data,credits:creditsData};
 }
 

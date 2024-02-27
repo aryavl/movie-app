@@ -12,5 +12,35 @@ body {
   font-family: 'Manrope', sans-serif;
   background-color: #141414;
 }
+/* CSS for Star Icons */
+.stars {
+  display: inline-block;
+}
+
+.star-icon {
+  background-color: #ff643d; /* Color for filled stars */
+  font-size: 24px; /* Adjust the size as needed */
+}
+
+.star-icon.empty {
+  color: #bbbac0; /* Color for empty stars */
+}
+
+.star-icon.half {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.star-icon.half::before {
+  content: '★';
+  position: absolute;
+  overflow: hidden;
+  width: 50%;
+  background-color: #ff643d; /* Color for filled stars */
+}
+
+
+
 
 
