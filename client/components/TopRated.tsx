@@ -54,6 +54,8 @@ const TopRated: React.FC = () => {
     const fetchData = async () => {
       try {
         const data = await getTopRatedMovies();
+        console.log(data);
+        
         setTopRatedMovies(data);
         setLoading(false);
       } catch (error) {
@@ -108,6 +110,9 @@ const TopRated: React.FC = () => {
         ) : (
           currentItems.map((item: TopRatedProps) => {
             const formattedDate = formatDateFunction(item.release_date);
+            const formatedVoteCount = Math.round(item.vote_average * 10)/10
+            
+            
             return (
               <div
                 key={item.id}
@@ -130,7 +135,7 @@ const TopRated: React.FC = () => {
                   <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#0e0d0d] to-transparent pointer-events-none rounded-lg"></div>
                 </div>
 
-                <div className="absolute top-[88%] z-10 px-2 w-full flex items-center justify-center">
+                <div className="absolute top-[88%] z-10 px-2 w-full flex items-center justify-between">
                   <button className="rounded-full bg-[#0e0d0d] text-[10px] border border-[#262626] px-2 py-1">
                     Release on {formattedDate}
                   </button>

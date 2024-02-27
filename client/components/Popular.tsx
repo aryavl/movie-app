@@ -52,7 +52,7 @@ const Popular = () => {
     const fetchData = async () => {
       try {
         const data = await getPopularMovies();
-        console.log(data);
+        
         setPopularMovies(data);
         setLoading(false);
       } catch (error) {

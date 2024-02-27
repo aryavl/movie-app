@@ -40,7 +40,7 @@ function Card<T extends CommonProps>({ item }: CardProps<T>) {
 
       <div className="absolute top-[88%] z-10 px-2 w-full flex items-center justify-center">
         <button className="rounded-full bg-[#0e0d0d] text-[10px] border border-[#262626] px-2 py-1">
-          Released on {formattedDate}
+          Released at {formattedDate}
         </button>
       </div>
     </div>

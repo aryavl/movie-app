@@ -53,7 +53,7 @@ const Latest = () => {
     const fetchData = async () => {
       try {
         const data = await getLatestMovies();
-        console.log(data);
+        
         setLatestMovies(data);
         setLoading(false);
       } catch (error) {
