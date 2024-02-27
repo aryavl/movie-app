@@ -51,20 +51,33 @@ interface CreditProps {
   }[];
   id: number;
 }
+interface ReviewProps {
+  author:string;
+author_details: {name: string, username: string, avatar_path:string, rating: number}
+content:string;
+created_at: string;
+id:string;
+updated_at:string;
+url:string
+}
 const MovieDetail: React.FC<{ params: ParamsType }> = ({ params }) => {
   const { id } = params;
   const [movieDetail, setMovieDetail] = useState<MovieDetailProp | null>(null);
   const [creditsData, setCredits] = useState<CreditProps | null>(null);
+  const [reviewData, setReviewData] = useState<ReviewProps[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data, credits } = await getSingleMovieDetails(id);
-        console.log(data, "movie");
-        console.log(credits, "credit");
+        const { data, credits, reviews } = await getSingleMovieDetails(id);
+        // console.log(data, "movie");
+        // console.log(credits, "credit");
+        console.log(reviews, "reviewsssssssssssssssss");
+
         setMovieDetail(data);
-        setCredits(credits)
+        setCredits(credits);
+        setReviewData(reviews);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching upcoming movie data:", error);
@@ -76,9 +89,16 @@ const MovieDetail: React.FC<{ params: ParamsType }> = ({ params }) => {
 
   return (
     <div>
-      <MovieDetailNavbar />
-      <MovieDetailHero movie={movieDetail} />
-      <MovieDetailSection movie={movieDetail} credits={creditsData}/>
+      {loading ? (
+        <h1>Loading ...</h1>
+      ) : (
+        <>
+          <MovieDetailNavbar />
+          <MovieDetailHero movie={movieDetail} />
+          <MovieDetailSection movie={movieDetail} credits={creditsData} reviews={reviewData} />
+        </>
+      )}
+
       <Footer />
     </div>
   );

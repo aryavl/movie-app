@@ -82,10 +82,18 @@ export const getSingleMovieDetails= async(id:number|string)=>{
     const credits = await fetch(`${baseURL}/movie/${id}/credits?api_key=${API_KEY}&language=en`)
     if (!credits.ok) {
         throw new Error(
-            `Failed to fetch latest movies. Status: ${response.status}`
+            `Failed to fetch latest movies. Status: ${credits.status}`
         );
     }
     const creditsData = await credits.json();
-    return {data:data,credits:creditsData};
+    const review = await fetch(`${baseURL}/movie/${id}/reviews?api_key=${API_KEY}&language=en&page=1`)
+    if (!review.ok) {
+        throw new Error(
+            `Failed to fetch latest movies. Status: ${review.status}`
+        );
+    }
+    const reviewData = await review.json();
+
+    return {data:data,credits:creditsData,reviews:reviewData.results};
 }
 
