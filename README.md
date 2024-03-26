@@ -64,8 +64,8 @@ Lists a few similar movies with titles, posters, and brief overviews.
 
 To run this application locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/yourusername/movie-application.git`
-2. Navigate to the project directory: `cd movie-application`
+1. Clone the repository: `git clone git@github.com:aryavl/movie-app.git`
+2. Navigate to the project directory: `cd client`
 3. Obtain an API key from TMDb by signing up at https://www.themoviedb.org/.
 4. Create a `.env` file in the root directory of the project.
 5. Add your TMDb API key to the `.env` file: `REACT_APP_TMDB_API_KEY=your_api_key`
