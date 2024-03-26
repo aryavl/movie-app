@@ -2,7 +2,9 @@
 
 Welcome to the Movie Application Site! This web application allows you to explore and discover information about various movies. Built using React.js and Tailwind CSS, it offers a responsive and interactive design for seamless user experience.
 
-## Landing Page
+## Link 
+
+`https://movie-app-inky-chi.vercel.app/`
 
 The landing page features five sections:
 
